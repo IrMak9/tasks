@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи</title>
+
+</head>
+<body>
+    
+        <a href="modal.html">Модальное окно</a>
+   
+        <a href="slider.html">Слайдер</a>
+
+
+    <script>
+
+ // Задача 1. Создать переменную со строковым значением. Сформировать переменную которая будет состоять только из ГЛАСНЫХ букв этой строки. Результат вывести в консоль.//
+
+        const string = "Привет! Как дела???";
+        const vowels = ["а","и","е"];
+    
+    
+        const getVowels = stringToFilter => {
+         let XVowel = "";
+
+             
+            for (let i = 0; i < stringToFilter.length; i++) {
+                const currentLetter = stringToFilter[i].toLowerCase();
+    
+                if (vowels.includes(currentLetter)) {
+                    XVowel += currentLetter;
+                }
+
+            }
+    
+            return XVowel;    
+    
+        }
+        console.log(getVowels(string)); 
+
+ // Задача 2. Сформировать произвольный массив объектов, описывающий, например, работников компании, в каждом объекте должны содержаться сл. свойства (поля) - name (содержащее имя сотрудника) и поле salary (содержащее зарплату сотрудника от 0 до 3000). Сформировать функцию в которую будет передан в качестве аргумента этот массив и возвращен из функции массив содержащий имена всех сотрудников, чья зарплата превышает 1000.//
+
+       const workers = [
+		{"name":"John","salary":500},
+		{"name":"Mike","salary":1300},
+		{"name":"Linda","salary":1500}];
+
+        const getWorthyWorkers = (workersArr) => {
+            const worthyworkers = [];
+
+            for (let i = 0; i < workersArr.length; i++){
+                const CurrentWorker = workersArr[i];
+
+                if (CurrentWorker.salary > 1000){
+                    worthyworkers.push(CurrentWorker.name);
+                 }
+
+            }
+            return worthyworkers;
+        }
+        console.log(getWorthyWorkers(workers))
+    
+// Задача 2, второй вариант решения //   
+
+
+
+
+        const getWorthyWorkers2 = (workersArr) => {
+            const worthyworkers = [];
+
+            workersArr.forEach(CurrentWorker => {
+                if (CurrentWorker.salary > 1000){
+                    worthyworkers.push(CurrentWorker.name);
+                 }
+                
+            });
+            
+            return worthyworkers;
+        }
+        console.log(getWorthyWorkers2(workers))
+
+// Задача 3. Написать функцию которая будет принимать в качестве аргумента строку имитирующую адрес до файла. Функция должна возвращать true или false в зависимости от того есть у этого файла расширение html или нет.//   
+
+        const path = "/users/download/index.html"
+
+        const isHtml = path => {
+            const ideal = ".html";
+            const pathExt = path.slice(-5);
+
+            if ( ideal == pathExt) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+
+        console.log(isHtml(path))
+
+// Задача 3, упрощение//  
+
+        const path2 = "/users/download/index.css"
+
+        const isHtml2 = path => {
+            const ideal = ".html";
+            const pathExt = path.slice(-5);
+
+            return ideal == pathExt;
+        }
+
+
+        console.log(isHtml2(path2))
+
+// Задача 4. Создайте функцию которая в качестве аргумента принимает целое число, и проверяет четное оно или нет. Затем создайте произвольный массив целых чисел. И используя функцию проверки числа на четность, создайте из готового массива новый, который будет содержать только четные числа. Результат выведите в консоль.//  
+
+        const mixedArray = [3,13,74,14,66,15,22,4];
+        const isEven = num => { 
+            return num % 2 == 0;
+        }
+
+        const filterArray = ( arrayToFilter, filterFn) => {
+
+                const filtredArray = [];
+
+                arrayToFilter.forEach(num =>{
+                    if (filterFn(num)) {
+                        filtredArray.push(num);
+                    }
+                })
+            
+            
+
+
+            return filtredArray;
+        }
+
+        console.log(filterArray(mixedArray, isEven));
+
+    </script>
+
+
+</body>
+</html>
